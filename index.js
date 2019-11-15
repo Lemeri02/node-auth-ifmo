@@ -35,12 +35,12 @@ app
       if (user.password === r.body.pass){
         r.session.auth = 'ok';
         r.session.login = login;
-        r.res.send('Vi avtorizovani. Dostupen zakritii marshrut!');
+        r.res.send('Вы авторизованы! Доступен закрытый маршрут!');
       } else {
-        r.res.send('Nevernii parol!');
+        r.res.send('Неверный пароль!');
       }
     } else {
-      r.res.send('net takogo polzovatelya');
+      r.res.send('Нет такого пользователя!');
     }
   })
   .get('/logout', (req, res) => {
