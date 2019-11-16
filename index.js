@@ -19,7 +19,10 @@ const checkAuth = (req, res, next) => {
 
 Router
   .route('/')
-  .get(r => r.res.end('Привет мир!'))
+  .get(r => r.res.end(`<h1>Привет мир!</h1>
+  <p><a href="/login">Залогиниться</a></p>
+  <p><a href="/users">Users</a></p>
+  <p><a href="https://github.com/Lemeri02/node-auth-ifmo">https://github.com/Lemeri02/node-auth-ifmo</a></p>`))
 app
   .use((r, rs, n) => rs.status(200).set(hu) && n())
   .use(x.static('.'))
@@ -35,7 +38,8 @@ app
       if (user.password === r.body.pass){
         r.session.auth = 'ok';
         r.session.login = login;
-        r.res.send('Вы авторизованы! Доступен закрытый маршрут!');
+        r.res.send(`<h2>Вы авторизованы! Доступен закрытый маршрут!</h2>
+        <p><a href="/logout">Покинуть страницу</a></p>`);
       } else {
         r.res.send('Неверный пароль!');
       }
